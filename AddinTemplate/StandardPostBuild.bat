@@ -1,0 +1,1 @@
+XCOPY %1bin\Debug\*.* C:\ProdSys\Bentley\BentleyMap\Workspace\standards\assemblies /Y

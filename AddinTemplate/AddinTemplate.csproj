@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{9224DD07-7808-4DF6-9132-C4C0E37BFEF5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AddinTemplate</RootNamespace>
+    <AssemblyName>AddinTemplate</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+	<StartProgram>C:\Program Files %28x86%29\Bentley\Mapstandalone V8i\Mapstandalone\Mapstandalone.exe</StartProgram>
+    <StartArguments>"S:\2017\J1700000\AddinTest\1700000-475.dgn" -wuLe34_Standard_Le34</StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bentley.General.1.0">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\assemblies\ECFramework\Bentley.General.1.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bentley.interop.microstationdgn">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\assemblies\bentley.interop.microstationdgn.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Bentley.Interop.Xft">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\bin\assemblies\Bentley.Interop.Xft.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bentley.microstation">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\assemblies\bentley.microstation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bentley.microstation.interfaces.1.0">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\assemblies\bentley.microstation.interfaces.1.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bentley.microstation.winforms.controls">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\assemblies\bentley.microstation.winforms.controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ustation">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Bentley\MapStandalone V8i\MapStandalone\ustation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Addin.cs" />
+    <Compile Include="KeyinCommands.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Commands.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StandardPostBuild.bat" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(ProjectDir)StandardPostBuild.bat" "$(ProjectDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

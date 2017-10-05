@@ -1,0 +1,17 @@
+﻿<KeyinTree xmlns="http://www.bentley.com/schemas/1.0/MicroStation/AddIn/KeyinTree.xsd">
+  <RootKeyinTable ID="root">
+    <Keyword SubtableRef="$safeprojectname$" CommandClass="MacroCommand" CommandWord="$safeprojectname$" >
+      <Options Required="true"/>
+    </Keyword>
+  </RootKeyinTable>
+  <SubKeyinTables>
+    <KeyinTable ID="$safeprojectname$">
+      <Keyword CommandWord="Start"> </Keyword>
+      <Keyword CommandWord="Debug"> </Keyword>
+    </KeyinTable>
+  </SubKeyinTables>
+  <KeyinHandlers>
+    <KeyinHandler Keyin="$safeprojectname$ Start" Function="$safeprojectname$.KeyinCommands.Start"/>
+    <KeyinHandler Keyin="$safeprojectname$ Debug" Function="$safeprojectname$.KeyinCommands.Debug"/>
+  </KeyinHandlers>
+</KeyinTree>
